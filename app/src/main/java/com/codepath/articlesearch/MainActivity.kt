@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.codepath.articlesearch.databinding.ActivityMainBinding
 import com.codepath.asynchttpclient.AsyncHttpClient
+import com.codepath.asynchttpclient.BuildConfig
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler
 import kotlinx.serialization.json.Json
 import okhttp3.Headers
@@ -20,15 +21,19 @@ fun createJson() = Json {
 }
 
 private const val TAG = "MainActivity/"
-private const val SEARCH_API_KEY = BuildConfig.API_KEY
+private const val SEARCH_API_KEY = "HPuJU3fYYGdRGocSoeT4PdLiKjDNbIBX"
 private const val ARTICLE_SEARCH_URL =
     "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=${SEARCH_API_KEY}"
 
 class MainActivity : AppCompatActivity() {
+    private val articles = mutableListOf<Article>()
     private lateinit var articlesRecyclerView: RecyclerView
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        val articleAdapter = ArticleAdapter(this,articles)
+        articlesRecyclerView.adapter = articleAdapter
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -60,8 +65,16 @@ class MainActivity : AppCompatActivity() {
                     // TODO: Create the parsedJSON
 
                     // TODO: Do something with the returned json (contains article information)
+                    val parsedJson = createJson().decodeFromString(
+                        SearchNewsResponse.serializer(),
+                        json.jsonObject.toString()
+                    )
 
                     // TODO: Save the articles and reload the screen
+                    parsedJson.response?.docs?.let { list ->
+                        articles.addAll(list)
+                        articleAdapter.notifyDataSetChanged()
+                    }
 
                 } catch (e: JSONException) {
                     Log.e(TAG, "Exception: $e")
