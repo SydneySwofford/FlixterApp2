@@ -5,13 +5,14 @@
     android:id="@+id/detailLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/gray"
     tools:context=".DetailActivity">
 
     <ImageView
         android:id="@+id/mediaImage"
         android:layout_width="match_parent"
         android:scaleType="fitXY"
-        android:layout_height="400dp"
+        android:layout_height="350dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -33,22 +34,23 @@
         app:layout_constraintTop_toBottomOf="@+id/mediaImage" />
 
     <TextView
-        android:id="@+id/mediaReleaseDate"
+        android:id="@+id/mediaLanguage"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="10dp"
-        android:text="Byline"
+        android:text="language"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
-        android:textColor="#000000"
         android:textStyle="bold"
+        android:textColor="@color/green"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mediaTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/mediaRelease" />
 
     <TextView
-        android:id="@+id/mediaLanguage"
+        android:id="@+id/mediaoverview"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -58,7 +60,37 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mediaReleaseDate" />
+        app:layout_constraintTop_toBottomOf="@+id/mediaadult" />
+
+    <TextView
+        android:id="@+id/mediaadult"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:text="rating"
+        android:textColor="@color/red"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mediaLanguage" />
+
+    <TextView
+        android:id="@+id/mediaRelease"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:text="release date"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mediaTitle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

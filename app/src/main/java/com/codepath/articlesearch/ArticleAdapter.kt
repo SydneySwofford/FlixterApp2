@@ -35,14 +35,16 @@ class ArticleAdapter(private val context: Context, private val articles: List<Ar
 
         private val mediaImageView = itemView.findViewById<ImageView>(R.id.mediaImage)
         private val titleTextView = itemView.findViewById<TextView>(R.id.mediaTitle)
-        private val abstractTextView = itemView.findViewById<TextView>(R.id.mediaLanguage)
+        private val abstractTextView = itemView.findViewById<TextView>(R.id.mediaoverview)
+
 
         init {
             itemView.setOnClickListener(this)
         }
         fun bind(article: Article) {
-            titleTextView.text = article.headline
+            titleTextView.text = article.title
             abstractTextView.text = article.abstract
+
 
             Glide.with(context)
                 .load(article.mediaImageUrl)

@@ -20,14 +20,20 @@ data class Article(
     val abstract: String?,
 
     @SerialName("original_language")
-    val byline: String?,
+    val language: String?,
 
     @SerialName("title")
-    val headline: String?,
+    val title: String?,
 
     @SerialName("poster_path")
     val multimedia: String,
 
-) : java.io.Serializable {
+    @SerialName("adult")
+    var adult: Boolean?,
+
+    @SerialName("release_date")
+    var release: String,
+
+    ) : java.io.Serializable {
     val mediaImageUrl = "https://image.tmdb.org/t/p/w500${multimedia}"
 }
