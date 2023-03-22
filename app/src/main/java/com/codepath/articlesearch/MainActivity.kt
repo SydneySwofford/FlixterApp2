@@ -31,16 +31,18 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
-        val articleAdapter = ArticleAdapter(this,articles)
-        articlesRecyclerView.adapter = articleAdapter
         super.onCreate(savedInstanceState)
+
+
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
 
         articlesRecyclerView = findViewById(R.id.articles)
+
+        val articleAdapter = ArticleAdapter(this,articles)
+        articlesRecyclerView.adapter = articleAdapter
         // TODO: Set up ArticleAdapter with articles
 
         articlesRecyclerView.layoutManager = LinearLayoutManager(this).also {
