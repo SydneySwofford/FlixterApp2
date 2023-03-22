@@ -21,9 +21,9 @@ fun createJson() = Json {
 }
 
 private const val TAG = "MainActivity/"
-private const val SEARCH_API_KEY = "HPuJU3fYYGdRGocSoeT4PdLiKjDNbIBX"
+private const val SEARCH_API_KEY = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
 private const val ARTICLE_SEARCH_URL =
-    "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=${SEARCH_API_KEY}"
+    "https://api.themoviedb.org/3/movie/upcoming?api_key=${SEARCH_API_KEY}"
 
 class MainActivity : AppCompatActivity() {
     private val articles = mutableListOf<Article>()
@@ -68,12 +68,12 @@ class MainActivity : AppCompatActivity() {
 
                     // TODO: Do something with the returned json (contains article information)
                     val parsedJson = createJson().decodeFromString(
-                        SearchNewsResponse.serializer(),
+                        BaseResponse.serializer(),
                         json.jsonObject.toString()
                     )
 
                     // TODO: Save the articles and reload the screen
-                    parsedJson.response?.docs?.let { list ->
+                    parsedJson.docs?.let { list ->
                         articles.addAll(list)
                         articleAdapter.notifyDataSetChanged()
                     }
