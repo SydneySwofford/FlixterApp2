@@ -25,9 +25,6 @@ GIF created with Screen to Gif
 
 ## Notes
 
-Initially I started the project using fragments from the origional flixter app project, but this became very complicated.
-Debugging with the TA's couldnt solve, so I restarted only using the lab format. 
-
 ## License
 
     Copyright 2023 Sydney Swofford
